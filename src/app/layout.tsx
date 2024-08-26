@@ -16,6 +16,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title> Saka Blog </title>
+      </head>{" "}
       <body className={inter.className}>{children}</body>
     </html>
   );
