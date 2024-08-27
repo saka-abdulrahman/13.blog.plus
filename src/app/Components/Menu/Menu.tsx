@@ -31,6 +31,7 @@ const Menu = () => {
   return (
     <>
       <div
+<<<<<<< HEAD
         className={` w-[26rem]  h-full bg-[#FFFFFF50]  dark:bg-[#272D3330]  flex flex-col top-14 p-1 gap-1 fixed  z-10 max-[1176px]:w-[18rem]max-[1390px]:bg-bg1
         max-[1390px]:dark:bg-bg1Dark  max-[700px]:w-full  max-[700px]:top-0  transition-all duration-300
         ${
@@ -42,6 +43,24 @@ const Menu = () => {
           <div key={index}>
             <div
               className={`   py-4 px-4  text-4xl flex items-center gap-5 rounded-xl hover:bg-mainHover dark:hover:bg-mainHoverDark `}
+=======
+        className={` w-[26rem]  h-full bg-[#FFFFFF50]  dark:bg-[#272D3330]  flex flex-col top-14 p-1 gap-1 fixed  
+         z-10 
+        max-[1176px]:w-[18rem]
+        max-[1390px]:bg-bg1
+        max-[1390px]:dark:bg-bg1Dark
+        max-[700px]:w-full  max-[700px]:top-0
+        ${
+          isMenuActive ? " max-[1390px]:left-0 " : "max-[1390px]:-left-[40rem] "
+        }
+         transition-all duration-300 `}
+      >
+        {menuItem.map((item, index) => (
+          <>
+            <div
+              className={`   py-4 px-4  text-4xl flex items-center gap-5 rounded-xl hover:bg-mainHover dark:hover:bg-mainHoverDark `}
+              key={index}
+>>>>>>> 107079ea4474041061454dcd9a41420456cce453
               onClick={item.functionName}
             >
               <div
@@ -59,7 +78,11 @@ const Menu = () => {
             <hr
               className={` hidden  max-[1390px]:block bg-[#00000090] dark:bg-bg-[##43444410] `}
             />
+<<<<<<< HEAD
           </div>
+=======
+          </>
+>>>>>>> 107079ea4474041061454dcd9a41420456cce453
         ))}
       </div>
 
