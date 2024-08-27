@@ -35,8 +35,8 @@ const Modes: FC<ModesProps> = ({ isDark, setIsDark }) => {
     <div className={modesContainerClass}>
       {modesItems.map((item, index) => (
         <button
-          className={modeItemClass}
           key={index}
+          className={modeItemClass}
           onClick={item.functionName}
         >
           {item.icon}

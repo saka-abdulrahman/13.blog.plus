@@ -16,9 +16,10 @@ const Home = () => {
   // }, []);
 
   const [isDark, setIsDark] = useState<boolean>(false);
+  console.log("hello");
 
   return (
-    <div className={` ${isDark ? "dark" : ""}`}>
+    <div className={` ${isDark ? "dark" : ""}    `}>
       <Header isDark={isDark} setIsDark={setIsDark} />
       <div className="bg-bg2 dark:bg-bg2Dark   min-h-[100vh] pt-20 max-[700px]:pt-7 flex justify-evenly items-c ">
         <div className="max-[700px]:hidden "></div>
