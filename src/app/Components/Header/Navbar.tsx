@@ -13,8 +13,8 @@ const Navbar: FC = () => {
   const navbarContainerClass: string = ` z-50 flex gap-3  bg-bg1 dark:bg-bg1Dark
   max-[1300px]:fixed max-[1300px]:bottom-0 max-[1300px]:w-full max-[1300px]:justify-center  max-[1300px]:left-0 
   max-[700px]:flex   `;
-  const navbarItemClass: string = `text-5xl text-navIcons dark:text-navIcons px-6 py-1 hover:bg-mainHover  dark:hover:bg-mainHoverDark 
-   max-[460px]:text-4xl max-[460px]:p-1 `;
+  const navbarItemClass: string = `text-5xl max-[1300px]:text-3xl text-navIcons dark:text-navIcons px-6 py-1 hover:bg-mainHover  dark:hover:bg-mainHoverDark 
+   max-[460px]:text-2xl max-[460px]:p-1 `;
 
   const navbarItems: NavbarItem[] = [
     { icon: <RiHome2Fill />, to: "/" },
