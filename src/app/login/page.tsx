@@ -1,6 +1,8 @@
 // pages/Login.tsx
 "use client";
 
+import { useEffect, useState } from "react";
+
 import React from "react";
 
 import LoginHeader from "./components/LoginHeader";
@@ -9,8 +11,10 @@ import FormSection from "./components/FormSction/FormSection";
 import Footer from "./components/Footer";
 
 const Login = () => {
+  const [isDark, setIsDark] = useState<boolean>(false);
+
   return (
-    <div className="relative ">
+    <div className={`relative ${isDark ? "dark" : ""} `}>
       <LoginHeader />
       <div
         className={`h-[100svh] bg-bg2 dark:bg-bg2Dark  p-12 pt-36 flex justify-around max-[551px]:justify-center max-[551px]:gap-5
@@ -19,7 +23,7 @@ const Login = () => {
         <PromoSection />
         <FormSection />
       </div>
-      <Footer />
+      <Footer isDark={isDark} setIsDark={setIsDark} />
     </div>
   );
 };

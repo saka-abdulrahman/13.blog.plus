@@ -2,7 +2,14 @@
 import React from "react";
 import { MdDarkMode } from "react-icons/md";
 
-const Footer = () => {
+import { FC } from "react";
+
+interface FooterProps {
+  isDark: boolean;
+  setIsDark: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Footer: FC<FooterProps> = ({ isDark, setIsDark }) => {
   return (
     <footer
       className={`   flex items-center justify-between  px-4 absolute bottom-0 max-[700px]:text-sm  text-[1.25rem] text-main2 dark:text-main2Dark  bg-bg1 dark:bg-bg1Dark w-full  `}
@@ -17,12 +24,12 @@ const Footer = () => {
       </div>
 
       <p className="max-[374px]:absolute -bottom-4 max-[374px]:w-full text-center ">
-        {" "}
-        ©Abdulrahman-Saka{" "}
+        ©Abdulrahman-Saka
       </p>
 
       <div className={` flex items-center gap-3  `}>
         <button
+          onClick={() => setIsDark(!isDark)}
           className={`bg-bg2 dark:bg-bg2Dark rounded-full text-2xl p-2 hover:bg-bg2Hover dark:hover:bg-bg2DarkHover`}
         >
           <MdDarkMode />

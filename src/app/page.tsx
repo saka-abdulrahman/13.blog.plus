@@ -16,6 +16,51 @@ const Home = () => {
   // }, []);
 
   const [isDark, setIsDark] = useState<boolean>(false);
+
+  const [users, setUsers] = useState<
+    Array<{
+      userId: number;
+      userType: string;
+      name: string;
+      surname: string;
+      email: string;
+      password: string;
+      profileImage: string;
+      age: String;
+      gender: string;
+      createdAt: string;
+      posts: Array<{
+        postID: number;
+        title: string;
+        image: string;
+        description: string;
+        postCreatedAt: string;
+      }>;
+    }>
+  >([
+    {
+      userId: 0,
+      usetType: "admin",
+      name: "abdulrahman",
+      surname: "saka",
+      email: "abdulrahman@gmail.com",
+      password: "1234",
+      profileImage: "url",
+      age: "02/02/2002",
+      gender: "male",
+      createdAt: "",
+      posts: [
+        {
+          postID: 0,
+          title: "abdulrahman is good",
+          image: "/post1.jpg",
+          description: "abdulrahman is good",
+          postCreatedAt: " ",
+        },
+      ],
+    },
+  ]);
+
   console.log("hello");
 
   return (

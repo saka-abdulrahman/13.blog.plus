@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import LoginButton from "./LoginButton";
-import SignInButton from "./SignInButton";
+import SignInButton from "./signInButton/SignInButton";
 
 const FormSection = () => {
   const [isSignInActive, setIsSignInActive] = useState<boolean>(false);

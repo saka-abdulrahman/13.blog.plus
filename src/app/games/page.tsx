@@ -1,12 +1,10 @@
-// src/app/friends/page.tsx
 "use client";
-
-import { useEffect, useState } from "react";
 
 import Header from "../Components/Header/Header";
 import Menu from "../Components/Menu/Menu";
+import { useEffect, useState } from "react";
 
-const Friends = () => {
+const Games = () => {
   const [isDark, setIsDark] = useState<boolean>(false);
 
   return (
@@ -20,4 +18,4 @@ const Friends = () => {
   );
 };
 
-export default Friends;
+export default Games;

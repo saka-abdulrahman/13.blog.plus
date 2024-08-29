@@ -6,12 +6,14 @@ interface PasswordInputProps {
   isPasswordVisible: boolean;
   togglePasswordVisibility: () => void;
   extra: string;
+  setPassword: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const PasswordInput: React.FC<PasswordInputProps> = ({
   isPasswordVisible,
   togglePasswordVisibility,
   extra,
+  setPassword,
 }) => {
   return (
     <div className={`relative hover:bg-inputHover ${extra} `}>
@@ -19,6 +21,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
         className={`px-5 py-7 pr-[4.5rem] first-line:border w-full text-black hover:bg-inputHover focus:bg-inputHover focus:outline-main2 border border-[#00000090] dark:border-[#E0E0E050]  rounded-xl`}
         type={isPasswordVisible ? "text" : "password"}
         placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
       />
       <div
         className="absolute text-5xl -translate-y-1/2 cursor-pointer right-5 top-1/2"
