@@ -8,24 +8,32 @@ import SignInButton from "./signInButton/SignInButton";
 const FormSection = () => {
   const [isSignInActive, setIsSignInActive] = useState<boolean>(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   return (
     <div
       className={`max-[551px]:w-full flex flex-col gap-6 px-5 py-11 shadow-xl bg-bg1 dark:bg-bg1Dark rounded-xl h-[40rem] `}
     >
-      <form
+      <div
         className={`w-[30rem] max-[551px]:w-full flex flex-col gap-9 text-4xl text-[#00000050] dark:text-[#E0E0E050] max-[551px]:text-3xl`}
       >
-        <EmailInput placeholderName={"Email"} />
+        <EmailInput
+          placeholderName={"Email"}
+          extra={" "}
+          setType={setEmail}
+          length={1000}
+        />
         <PasswordInput
           isPasswordVisible={isPasswordVisible}
           togglePasswordVisibility={() =>
             setIsPasswordVisible(!isPasswordVisible)
           }
           extra={""}
+          setPassword={setPassword}
         />
-        <LoginButton />
-      </form>
+        <LoginButton email={email} password={password} />
+      </div>
 
       <hr className={`h-[2px] rounded-full bg-[#00000085]`} />
 

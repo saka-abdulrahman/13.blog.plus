@@ -3,7 +3,8 @@ import SignInHeader from "./SignInHeader";
 import UserDetails from "./UserDetails";
 import DateOfBirth from "./DateOfBirth";
 import GenderSelection from "./GenderSelection";
-// import SignInButtonComponent from "./SignInButtonComponent";
+import useStore from "@/store/store";
+import { getCurrentDate } from "./functions";
 
 interface SignInButtonProps {
   toggleSignIn: () => void;
@@ -14,23 +15,100 @@ const SignInButton: React.FC<SignInButtonProps> = ({
   toggleSignIn,
   isSignInActive,
 }) => {
+  const { addUser, users, dicSignInDoneCounter } = useStore();
+
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
-  const [gender, setGender] = useState<string | null>(null);
+
   const [name, setName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [dateOfBirth, setDateOfBirth] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  console.log("name: ", name);
-  console.log("lastName : ", lastName);
-  console.log("email : ", email);
-  console.log("dateOfBirth : ", dateOfBirth);
-  console.log("gender:", gender);
-  console.log("psw: ", password);
+  const [dateOfBirth, setDateOfBirth] = useState<string>("");
+  const [userIdCounter, setUserIdCounter] = useState<number>(0);
+  const [gender, setGender] = useState<string | null>(null);
 
   const createNewAccount = () => {
-    
+    const newUser = {
+      userId: userIdCounter,
+      userType: "user",
+      name,
+      surname: lastName,
+      email,
+      password,
+      profileImage: "none",
+      age: dateOfBirth,
+      gender: gender ?? "",
+      createdAt: getCurrentDate(),
+      posts: [
+        {
+          postID: -1,
+          title: "",
+          image: "",
+          description: "",
+          postCreatedAt: getCurrentDate(),
+        },
+      ],
+    };
+
+    if (checkForValidEmail(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (checkForStrongPassword(password)) {
+      alert(
+        "Password must contain at least 8 characters. and at least one number."
+      );
+      return;
+    }
+
+    if (checkForEmptyFields(newUser)) {
+      return;
+    }
+
+    if (checkForExistingEmail(email)) {
+      alert("Email already exists.");
+      return;
+    }
+
+    addUser(newUser);
+    setUserIdCounter(userIdCounter + 1);
+    setAllFieldsToDefault();
+    dicSignInDoneCounter();
+    toggleSignIn();
+
+    alert("Account created successfully.");
+  };
+
+  const checkForValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return !emailRegex.test(email);
+  };
+
+  const checkForStrongPassword = (password: string) => {
+    return password.length < 8 || !/\d/.test(password);
+  };
+
+  const checkForEmptyFields = (newUser: { [key: string]: any }) => {
+    for (const key in newUser) {
+      if (newUser[key] === "") {
+        alert(`Please fill the ${key} field.`);
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const checkForExistingEmail = (email: string) => {
+    return users.some((user) => user.email === email);
+  };
+
+  const setAllFieldsToDefault = () => {
+    setName("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+    setGender(null);
   };
 
   return (

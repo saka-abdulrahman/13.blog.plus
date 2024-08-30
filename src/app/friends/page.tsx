@@ -3,16 +3,18 @@
 
 import { useEffect, useState } from "react";
 
+import useStore from "@/store/store";
+
 import Header from "../Components/Header/Header";
 import Menu from "../Components/Menu/Menu";
 
 const Friends = () => {
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const { isDark, change } = useStore();
 
   return (
     <div className={isDark ? "dark" : ""}>
       <div className={"bg-bg2 dark:bg-bg2Dark h-[100svh] "}>
-        <Header isDark={isDark} setIsDark={setIsDark} />
+        <Header />
         <Menu />
         <div></div>
       </div>

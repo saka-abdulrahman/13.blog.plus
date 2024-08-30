@@ -1,28 +1,40 @@
-// components/EmailInput.tsx
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 
-interface EmailInputProbes {
+import useStore from "@/store/store";
+
+interface EmailInputProps {
   placeholderName: string;
   extra: string;
   setType: React.Dispatch<React.SetStateAction<string>>;
   length: number;
 }
 
-const EmailInput: FC<EmailInputProbes> = ({
+const EmailInput: FC<EmailInputProps> = ({
   placeholderName,
   extra,
   setType,
   length,
 }) => {
+  const { signInDoneCounter } = useStore();
+
+  const [value, setValue] = useState("");
+
   const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setType(event.target.value);
+    const newValue = event.target.value;
+    setValue(newValue);
+    setType(newValue);
   };
+
+  useEffect(() => {
+    setValue("");
+  }, [signInDoneCounter]);
 
   return (
     <input
       className={`px-5 py-7 border text-black hover:bg-inputHover focus:bg-inputHover focus:outline-main2 border-[#00000090] dark:border-[#E0E0E050] rounded-xl ${extra}`}
       type="text"
       placeholder={placeholderName}
+      value={value} // Controlled input tied to the state
       onChange={handleTypeChange}
       maxLength={length}
     />

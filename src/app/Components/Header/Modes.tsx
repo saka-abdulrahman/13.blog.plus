@@ -2,17 +2,16 @@ import { FC } from "react";
 import { IoNotifications } from "react-icons/io5";
 import { MdDarkMode, MdPerson, MdLightMode } from "react-icons/md";
 
+import useStore from "@/store/store";
+
 interface ModeItem {
   icon: JSX.Element;
   functionName: () => void;
 }
 
-interface ModesProps {
-  isDark: boolean;
-  setIsDark: (value: boolean) => void;
-}
+const Modes: FC = () => {
+  const { isDark, change } = useStore();
 
-const Modes: FC<ModesProps> = ({ isDark, setIsDark }) => {
   // styles
   const modesContainerClass: string =
     "flex gap-2 absolute right-5 max-[1300px]:static max-[700px]:hidden  ";
@@ -21,12 +20,9 @@ const Modes: FC<ModesProps> = ({ isDark, setIsDark }) => {
   const handleClick = () => {
     console.log("Function executed on path:");
   };
-  const DarkMode = () => {
-    setIsDark(!isDark);
-  };
 
   const modesItems: ModeItem[] = [
-    { icon: isDark ? <MdLightMode /> : <MdDarkMode />, functionName: DarkMode },
+    { icon: isDark ? <MdLightMode /> : <MdDarkMode />, functionName: change },
     { icon: <IoNotifications />, functionName: handleClick },
     { icon: <MdPerson />, functionName: handleClick },
   ];

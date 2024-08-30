@@ -3,6 +3,8 @@
 
 import { useEffect, useState } from "react";
 
+import useStore from "@/store/store";
+
 import React from "react";
 
 import LoginHeader from "./components/LoginHeader";
@@ -11,7 +13,7 @@ import FormSection from "./components/FormSction/FormSection";
 import Footer from "./components/Footer";
 
 const Login = () => {
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const { isDark, change } = useStore();
 
   return (
     <div className={`relative ${isDark ? "dark" : ""} `}>
@@ -23,7 +25,7 @@ const Login = () => {
         <PromoSection />
         <FormSection />
       </div>
-      <Footer isDark={isDark} setIsDark={setIsDark} />
+      <Footer />
     </div>
   );
 };
