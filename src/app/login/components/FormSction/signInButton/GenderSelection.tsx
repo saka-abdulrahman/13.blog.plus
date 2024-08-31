@@ -1,19 +1,13 @@
 import React, { useEffect } from "react";
 import useStore from "@/store/store";
+import useDetailsStore from "@/store/userDetails";
 
-interface GenderSelectionProps {
-  gender: string | null;
-  setGender: React.Dispatch<React.SetStateAction<string | null>>;
-}
-
-const GenderSelection: React.FC<GenderSelectionProps> = ({
-  gender,
-  setGender,
-}) => {
+const GenderSelection = () => {
   const { dicSignInDoneCounter } = useStore();
+  const { setGender, gender } = useDetailsStore();
 
   useEffect(() => {
-    setGender(null);
+    setGender("");
   }, [dicSignInDoneCounter]);
 
   return (

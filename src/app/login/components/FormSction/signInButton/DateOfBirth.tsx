@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import useStore from "@/store/store";
+import useDetailsStore from "@/store/userDetails";
 
-interface DateOfBirthProps {
-  setDateOfBirth: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const DateOfBirth: React.FC<DateOfBirthProps> = ({ setDateOfBirth }) => {
+const DateOfBirth = () => {
+  const { setDateOfBirth } = useDetailsStore();
   const [maxDate, setMaxDate] = useState<string>("");
 
   useEffect(() => {

@@ -5,6 +5,7 @@ import { FC } from "react";
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface NavbarItem {
   icon: JSX.Element;
@@ -19,13 +20,7 @@ const Navbar: FC = () => {
     { icon: <IoLogIn />, to: "/login" },
   ];
 
-  const [currentPath, setCurrentPath] = useState<string>("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCurrentPath(window.location.pathname); // Get the current path from window.location
-    }
-  }, []);
+  const currentPath = usePathname();
 
   return (
     <div

@@ -5,7 +5,7 @@ import useStore from "@/store/store";
 interface EmailInputProps {
   placeholderName: string;
   extra: string;
-  setType: React.Dispatch<React.SetStateAction<string>>;
+  setType: (email: string) => void;
   length: number;
 }
 

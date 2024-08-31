@@ -5,6 +5,7 @@ import DateOfBirth from "./DateOfBirth";
 import GenderSelection from "./GenderSelection";
 import useStore from "@/store/store";
 import { getCurrentDate } from "./functions";
+import useDetailsStore from "@/store/userDetails";
 
 interface SignInButtonProps {
   toggleSignIn: () => void;
@@ -17,19 +18,36 @@ const SignInButton: React.FC<SignInButtonProps> = ({
 }) => {
   const { addUser, users, dicSignInDoneCounter } = useStore();
 
-  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+  const {
+    name,
+    setName,
 
-  const [name, setName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [dateOfBirth, setDateOfBirth] = useState<string>("");
-  const [userIdCounter, setUserIdCounter] = useState<number>(0);
-  const [gender, setGender] = useState<string | null>(null);
+    lastName,
+    setLastName,
+
+    email,
+    setEmail,
+
+    password,
+    setPassword,
+
+    dateOfBirth,
+    setDateOfBirth,
+
+    gender,
+    setGender,
+
+    userIdCounter,
+    DicUserIdCounter,
+
+    setAllFieldsToDefault,
+  } = useDetailsStore();
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
   const createNewAccount = () => {
     const newUser = {
-      userId: userIdCounter,
+      userID: userIdCounter,
       userType: "user",
       name,
       surname: lastName,
@@ -37,10 +55,11 @@ const SignInButton: React.FC<SignInButtonProps> = ({
       password,
       profileImage: "none",
       age: dateOfBirth,
-      gender: gender ?? "",
+      gender: gender,
       createdAt: getCurrentDate(),
       posts: [
         {
+          userID: userIdCounter,
           postID: -1,
           title: "",
           image: "",
@@ -72,7 +91,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({
     }
 
     addUser(newUser);
-    setUserIdCounter(userIdCounter + 1);
+    DicUserIdCounter();
     setAllFieldsToDefault();
     dicSignInDoneCounter();
     toggleSignIn();
@@ -103,14 +122,6 @@ const SignInButton: React.FC<SignInButtonProps> = ({
     return users.some((user) => user.email === email);
   };
 
-  const setAllFieldsToDefault = () => {
-    setName("");
-    setLastName("");
-    setEmail("");
-    setPassword("");
-    setGender(null);
-  };
-
   return (
     <div className={`flex justify-center items-center mt-5`}>
       <button
@@ -132,12 +143,8 @@ const SignInButton: React.FC<SignInButtonProps> = ({
             togglePasswordVisibility={() =>
               setIsPasswordVisible(!isPasswordVisible)
             }
-            setEmail={setEmail}
-            setLastName={setLastName}
-            setName={setName}
-            setPassword={setPassword}
           />
-          <DateOfBirth setDateOfBirth={setDateOfBirth} />
+          <DateOfBirth />
 
           <li className="flex items-center justify-center col-span-1 row-span-2 max-[700px]:col-start-1 max-[700px]:col-end-3 max-[700px]:row-start-8">
             <button
@@ -148,7 +155,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({
             </button>
           </li>
 
-          <GenderSelection gender={gender} setGender={setGender} />
+          <GenderSelection />
         </ul>
       </div>
     </div>

@@ -2,11 +2,10 @@
 
 import Header from "../Components/Header/Header";
 import Menu from "../Components/Menu/Menu";
-import { useEffect, useState } from "react";
 import useStore from "@/store/store";
 
 const Games = () => {
-  const { isDark, change } = useStore();
+  const { isDark } = useStore();
 
   return (
     <div className={isDark ? "dark" : ""}>

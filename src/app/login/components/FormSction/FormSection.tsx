@@ -9,7 +9,12 @@ const FormSection = () => {
   const [isSignInActive, setIsSignInActive] = useState<boolean>(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
+
   const [password, setPassword] = useState<string>("");
+
+  const setPassword1 = (password: string) => {
+    setPassword(password);
+  };
 
   return (
     <div
@@ -30,7 +35,7 @@ const FormSection = () => {
             setIsPasswordVisible(!isPasswordVisible)
           }
           extra={""}
-          setPassword={setPassword}
+          setPassword={setPassword1}
         />
         <LoginButton email={email} password={password} />
       </div>

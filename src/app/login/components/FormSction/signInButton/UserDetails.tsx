@@ -2,25 +2,18 @@ import React, { useState } from "react";
 import EmailInput from "../EmailInput";
 import PasswordInput from "../PasswordInput";
 
-// import useStore from "@/store/store";
+import useDetailsStore from "@/store/userDetails";
 
 interface UserDetailsProps {
   isPasswordVisible: boolean;
   togglePasswordVisibility: () => void;
-  setEmail: React.Dispatch<React.SetStateAction<string>>;
-  setLastName: React.Dispatch<React.SetStateAction<string>>;
-  setName: React.Dispatch<React.SetStateAction<string>>;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const UserDetails: React.FC<UserDetailsProps> = ({
   isPasswordVisible,
   togglePasswordVisibility,
-  setEmail,
-  setLastName,
-  setName,
-  setPassword,
 }) => {
+  const { setName, setLastName, setEmail, setPassword } = useDetailsStore();
   return (
     <>
       <li className="col-span-1 max-[700px]:col-span-2">

@@ -2,7 +2,9 @@ import { IoPerson, IoMenu, IoCloseOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineLanguage, MdLogin } from "react-icons/md";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import useStore from "@/store/store";
 
 interface MenuItem {
   icon: JSX.Element;
@@ -11,12 +13,25 @@ interface MenuItem {
 }
 
 const Menu = () => {
+  const { loggedAccount } = useStore();
+  const [name, setName] = useState<string>("name");
+  const [surname, setSurname] = useState<string>("");
+
+  useEffect(() => {
+    setName(loggedAccount.name);
+    setSurname(loggedAccount.surname);
+  }, [loggedAccount]);
+
   const handleClick = () => {
     console.log("Function executed on path:");
   };
 
   const menuItem: MenuItem[] = [
-    { icon: <IoPerson />, functionName: handleClick, name: "Name" },
+    {
+      icon: <IoPerson />,
+      functionName: handleClick,
+      name: name ? name + " " + surname : "Profile",
+    },
     { icon: <FaStar />, functionName: handleClick, name: "Saved" },
     {
       icon: <MdOutlineLanguage />,

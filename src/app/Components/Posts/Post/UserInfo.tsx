@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { MdPerson, MdPersonAddAlt1 } from "react-icons/md";
 
 // Component 1
-const UserInfo = () => {
+
+interface UserInfoProps {
+  postCreatedAt: string;
+  name: string;
+  surName: string;
+}
+
+const UserInfo: FC<UserInfoProps> = ({ postCreatedAt, name, surName }) => {
   const [isSaved, setIsSaved] = useState(false);
 
   const handleSaveClick = () => {
@@ -26,9 +33,11 @@ const UserInfo = () => {
 
         <div className={`flex flex-col justify-center `}>
           <h1 className={` text-[#434444] text-base max-[374px]:text-xs  `}>
-            Name
+            {name} {surName}
           </h1>
-          <h2 className={` text-xs max-[272px]:text-[0.6rem] `}>14 June 24</h2>
+          <h2 className={` text-xs max-[272px]:text-[0.6rem] `}>
+            {postCreatedAt}
+          </h2>
         </div>
       </div>
 

@@ -6,7 +6,7 @@ interface PasswordInputProps {
   isPasswordVisible: boolean;
   togglePasswordVisibility: () => void;
   extra: string;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
+  setPassword: (password: string) => void;
 }
 
 const PasswordInput: React.FC<PasswordInputProps> = ({
