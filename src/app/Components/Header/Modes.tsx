@@ -1,16 +1,14 @@
-import { FC } from "react";
 import { IoNotifications } from "react-icons/io5";
 import { MdDarkMode, MdPerson, MdLightMode } from "react-icons/md";
-
-import useStore from "@/store/store";
+import useModesStore from "@/store/modesStore";
 
 interface ModeItem {
   icon: JSX.Element;
   functionName: () => void;
 }
 
-const Modes: FC = () => {
-  const { isDark, change } = useStore();
+const Modes = () => {
+  const { isDark, changeDarkMode } = useModesStore();
 
   // styles
   const modesContainerClass: string =
@@ -22,7 +20,10 @@ const Modes: FC = () => {
   };
 
   const modesItems: ModeItem[] = [
-    { icon: isDark ? <MdLightMode /> : <MdDarkMode />, functionName: change },
+    {
+      icon: isDark ? <MdLightMode /> : <MdDarkMode />,
+      functionName: changeDarkMode,
+    },
     { icon: <IoNotifications />, functionName: handleClick },
     { icon: <MdPerson />, functionName: handleClick },
   ];

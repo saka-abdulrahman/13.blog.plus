@@ -1,4 +1,3 @@
-// Component 2
 const PostContent = ({ description }: { description: string }) => {
   return (
     <div className={``}>

@@ -1,5 +1,3 @@
-import React from "react";
-
 const SignInButtonComponent: React.FC = () => (
   <li className="flex items-center justify-center col-span-1 row-span-2 max-[700px]:col-start-1 max-[700px]:col-end-3 max-[700px]:row-start-8">
     <button

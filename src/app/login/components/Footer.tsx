@@ -1,13 +1,10 @@
-// components/Footer.tsx
-import React from "react";
 import { MdDarkMode } from "react-icons/md";
-
-import { FC } from "react";
-
 import useStore from "@/store/store";
+import useModesStore from "@/store/modesStore";
 
-const Footer: FC = () => {
-  const { isDark, change, deleteAllUsers } = useStore();
+const Footer = () => {
+  const { deleteAllUsers } = useStore();
+  const { changeDarkMode } = useModesStore();
 
   return (
     <footer
@@ -31,7 +28,7 @@ const Footer: FC = () => {
 
       <div className={` flex items-center gap-3  `}>
         <button
-          onClick={change}
+          onClick={changeDarkMode}
           className={`bg-bg2 dark:bg-bg2Dark rounded-full text-2xl p-2 hover:bg-bg2Hover dark:hover:bg-bg2DarkHover`}
         >
           <MdDarkMode />

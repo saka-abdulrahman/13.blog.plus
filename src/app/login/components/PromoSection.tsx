@@ -1,11 +1,7 @@
-// components/PromoSection.tsx
-import React from "react";
-
-import useStore from "@/store/store";
+import useModesStore from "@/store/modesStore";
 
 const PromoSection = () => {
-  const { isDark } = useStore();
-
+  const { isDark } = useModesStore();
   return (
     <div
       className={` max-w-[60rem]  max-[1600px]:flex max-[1600px]:flex-col  max-[1600px]:justify-center max-[1600px]:items-center max-[1600px]:pt-5 `}

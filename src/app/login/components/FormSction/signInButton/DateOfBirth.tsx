@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import useDetailsStore from "@/store/userDetails";
+import { useEffect, useState } from "react";
+import useDetailsStore from "@/store/userDetailsStore";
 
 const DateOfBirth = () => {
   const { setDateOfBirth } = useDetailsStore();

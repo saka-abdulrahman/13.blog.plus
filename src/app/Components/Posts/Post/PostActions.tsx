@@ -1,9 +1,7 @@
 import { AiFillLike } from "react-icons/ai";
 import { FaComment, FaShare } from "react-icons/fa";
-
 import { useState } from "react";
 
-// Component 4
 const Button = ({
   icon,
   text,

@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-// Define the state and actions
 type PostStore = {
   posts: {
     userID: number;
@@ -39,7 +38,6 @@ const usePostStore = create<PostStore>((set) => ({
     },
   ],
 
-  // Add a new post
   addPost: (newPost) => set((state) => ({ posts: [...state.posts, newPost] })),
 }));
 

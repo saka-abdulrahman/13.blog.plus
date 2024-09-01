@@ -2,8 +2,6 @@ import { FC, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { MdPerson, MdPersonAddAlt1 } from "react-icons/md";
 
-// Component 1
-
 interface UserInfoProps {
   postCreatedAt: string;
   name: string;

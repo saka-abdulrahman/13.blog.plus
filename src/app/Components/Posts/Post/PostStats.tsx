@@ -1,4 +1,3 @@
-// Component 3
 const PostStats = () => {
   return (
     <div className={`flex flex-col  `}>

@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import EmailInput from "../EmailInput";
 import PasswordInput from "../PasswordInput";
-
-import useDetailsStore from "@/store/userDetails";
+import useDetailsStore from "@/store/userDetailsStore";
 
 interface UserDetailsProps {
   isPasswordVisible: boolean;

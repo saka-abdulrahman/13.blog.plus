@@ -1,20 +1,12 @@
-// pages/Login.tsx
 "use client";
-
-import { useEffect, useState } from "react";
-
-import useStore from "@/store/store";
-
-import React from "react";
-
 import LoginHeader from "./components/LoginHeader";
 import PromoSection from "./components/PromoSection";
 import FormSection from "./components/FormSction/FormSection";
 import Footer from "./components/Footer";
+import useModesStore from "@/store/modesStore";
 
 const Login = () => {
-  const { isDark, change } = useStore();
-
+  const { isDark } = useModesStore();
   return (
     <div className={`relative ${isDark ? "dark" : ""} `}>
       <LoginHeader />

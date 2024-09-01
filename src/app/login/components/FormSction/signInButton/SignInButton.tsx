@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SignInHeader from "./SignInHeader";
 import UserDetails from "./UserDetails";
 import DateOfBirth from "./DateOfBirth";
 import GenderSelection from "./GenderSelection";
 import useStore from "@/store/store";
+import useDetailsStore from "@/store/userDetailsStore";
 import { getCurrentDate } from "./functions";
-import useDetailsStore from "@/store/userDetails";
 
 interface SignInButtonProps {
   toggleSignIn: () => void;
@@ -21,25 +21,18 @@ const SignInButton: React.FC<SignInButtonProps> = ({
   const {
     name,
     setName,
-
     lastName,
     setLastName,
-
     email,
     setEmail,
-
     password,
     setPassword,
-
     dateOfBirth,
     setDateOfBirth,
-
     gender,
     setGender,
-
     userIdCounter,
     DicUserIdCounter,
-
     setAllFieldsToDefault,
   } = useDetailsStore();
 

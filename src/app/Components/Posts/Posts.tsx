@@ -1,8 +1,6 @@
 import CreatePost from "./CreatePost";
 import Post from "./Post/Post";
-
 import usePostStore from "@/store/postStore";
-import useStore from "@/store/store";
 
 const Posts = () => {
   const { posts } = usePostStore();

@@ -25,8 +25,6 @@ type User = {
 
 // Store type definition
 type Store = {
-  isDark: boolean;
-  change: () => void;
   users: User[];
   deleteAllUsers: () => void;
   addUser: (user: User) => void;
@@ -53,11 +51,6 @@ const loadUsersFromLocalStorage = (): User[] => {
 };
 
 const useStore = create<Store>((set) => ({
-  //! Dark Mode
-  isDark: false,
-  change: () => set((state) => ({ isDark: !state.isDark })),
-  //! END of Dark Mode
-
   // * Users
   users: loadUsersFromLocalStorage(),
   deleteAllUsers: () =>

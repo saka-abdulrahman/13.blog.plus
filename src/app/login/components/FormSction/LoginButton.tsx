@@ -13,7 +13,7 @@ const LoginButton: FC<LoginButtonProps> = ({ email, password }) => {
   const { users, loggedAccount, setLoggedAccount } = useStore();
   const router = useRouter(); // Initialize the useRouter hook
   const pathname = usePathname(); // Get the current pathname
-
+  
   const login = () => {
     const user = users.find((user) => user.email === email);
 

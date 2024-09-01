@@ -1,9 +1,7 @@
 import { IoPerson, IoMenu, IoCloseOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineLanguage, MdLogin } from "react-icons/md";
-
 import { useEffect, useState } from "react";
-
 import useStore from "@/store/store";
 
 interface MenuItem {
@@ -19,7 +17,7 @@ const Menu = () => {
 
   useEffect(() => {
     setName(loggedAccount.name);
-    setSurname(loggedAccount.surname);
+    setSurname(loggedAccount.surName);
   }, [loggedAccount]);
 
   const handleClick = () => {

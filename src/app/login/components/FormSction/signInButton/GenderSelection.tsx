@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import useStore from "@/store/store";
-import useDetailsStore from "@/store/userDetails";
+import useDetailsStore from "@/store/userDetailsStore";
 
 const GenderSelection = () => {
   const { dicSignInDoneCounter } = useStore();

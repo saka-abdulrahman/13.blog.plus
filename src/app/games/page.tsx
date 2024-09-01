@@ -2,10 +2,10 @@
 
 import Header from "../Components/Header/Header";
 import Menu from "../Components/Menu/Menu";
-import useStore from "@/store/store";
+import useModesStore from "@/store/modesStore";
 
 const Games = () => {
-  const { isDark } = useStore();
+  const { isDark } = useModesStore();
 
   return (
     <div className={isDark ? "dark" : ""}>

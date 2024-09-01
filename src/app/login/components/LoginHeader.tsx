@@ -1,5 +1,3 @@
-// components/Header.tsx
-import React from "react";
 import Link from "next/link";
 import { RiHome2Fill } from "react-icons/ri";
 

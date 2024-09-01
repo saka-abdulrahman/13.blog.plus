@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-
 import useStore from "@/store/store";
 
 interface EmailInputProps {
@@ -16,7 +15,6 @@ const EmailInput: FC<EmailInputProps> = ({
   length,
 }) => {
   const { signInDoneCounter } = useStore();
-
   const [value, setValue] = useState("");
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +32,7 @@ const EmailInput: FC<EmailInputProps> = ({
       className={`px-5 py-7 border text-black hover:bg-inputHover focus:bg-inputHover focus:outline-main2 border-[#00000090] dark:border-[#E0E0E050] rounded-xl ${extra}`}
       type="text"
       placeholder={placeholderName}
-      value={value} // Controlled input tied to the state
+      value={value}
       onChange={handleTypeChange}
       maxLength={length}
     />

@@ -1,15 +1,11 @@
-// src/app/friends/page.tsx
 "use client";
-
-import { useEffect, useState } from "react";
-
 import useStore from "@/store/store";
-
 import Header from "../Components/Header/Header";
 import Menu from "../Components/Menu/Menu";
+import useModesStore from "@/store/modesStore";
 
 const Friends = () => {
-  const { isDark, change } = useStore();
+  const { isDark } = useModesStore();
 
   return (
     <div className={isDark ? "dark" : ""}>
