@@ -10,8 +10,7 @@ interface LoginButtonProps {
 }
 
 const LoginButton: FC<LoginButtonProps> = ({ email, password }) => {
-  const { users, loggedAccount, setLoggedAccount, loggedName, setLoggedName } =
-    useStore();
+  const { users, loggedAccount, setLoggedAccount } = useStore();
   const router = useRouter(); // Initialize the useRouter hook
   const pathname = usePathname(); // Get the current pathname
 
@@ -33,7 +32,6 @@ const LoginButton: FC<LoginButtonProps> = ({ email, password }) => {
 
     if (user.password === password) {
       alert("Logged in successfully");
-      setLoggedName(user.name);
       setLoggedAccount(user);
       console.log("Logged in as", user.email);
 

@@ -50,7 +50,7 @@ const SignInButton: React.FC<SignInButtonProps> = ({
       userID: userIdCounter,
       userType: "user",
       name,
-      surname: lastName,
+      surName: lastName,
       email,
       password,
       profileImage: "none",
@@ -61,6 +61,8 @@ const SignInButton: React.FC<SignInButtonProps> = ({
         {
           userID: userIdCounter,
           postID: -1,
+          name: "",
+          surName: "",
           title: "",
           image: "",
           description: "",

@@ -32,8 +32,10 @@ const CreatePost: React.FC = () => {
     e.preventDefault();
 
     const newPost = {
-      userID: loggedAccount.userId,
+      userID: loggedAccount.userID,
       postID: postIDCounter,
+      name: loggedAccount.name,
+      surName: loggedAccount.surName,
       title: "New Post",
       image: postImage,
       description: content!,

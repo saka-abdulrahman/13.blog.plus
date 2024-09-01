@@ -5,7 +5,7 @@ type User = {
   userID: number;
   userType: string;
   name: string;
-  surname: string;
+  surName: string;
   email: string;
   password: string;
   profileImage: string;
@@ -15,6 +15,8 @@ type User = {
   posts: {
     postID: number;
     title: string;
+    name: string;
+    surName: string;
     image: string;
     description: string;
     postCreatedAt: string;
@@ -33,13 +35,11 @@ type Store = {
   loggedAccount: {
     userID: number;
     name: string;
-    surname: string;
+    surName: string;
     email: string;
     password: string;
   };
   setLoggedAccount: (account: User) => void;
-  loggedName: string; // Add the 'loggedName' property
-  setLoggedName: (name: string) => void; // Add the 'setLoggedName' method
 };
 
 // Load users from local storage or return an empty array if none are found
@@ -87,14 +87,11 @@ const useStore = create<Store>((set) => ({
   loggedAccount: {
     userID: -1,
     name: "",
-    surname: "",
+    surName: "",
     email: "",
     password: "",
   },
   setLoggedAccount: (account: User) => set({ loggedAccount: account }),
-
-  loggedName: "",
-  setLoggedName: (name: string) => set({ loggedName: name }),
 
   // ? END of Sign In Inputs and infos
 }));

@@ -16,8 +16,8 @@ const Posts = () => {
         {posts.map((post) => (
           <Post
             key={post.postID}
-            name={" "}
-            surName={" "}
+            name={post.name}
+            surName={post.surName}
             image={post.image ? new File([post.image], "image.jpg") : null}
             description={post.description}
             postCreatedAt={post.postCreatedAt}

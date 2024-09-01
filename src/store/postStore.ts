@@ -5,8 +5,10 @@ type PostStore = {
   posts: {
     userID: number;
     postID: number;
+    name: string;
+    surName: string;
     title: string;
-    image: string;
+    image: File | null;
     description: string;
     postCreatedAt: string;
   }[];
@@ -14,8 +16,10 @@ type PostStore = {
   addPost: (newPost: {
     userID: number;
     postID: number;
+    name: string;
+    surName: string;
     title: string;
-    image: string;
+    image: File | null;
     description: string;
     postCreatedAt: string;
   }) => void;
@@ -26,8 +30,10 @@ const usePostStore = create<PostStore>((set) => ({
     {
       userID: -1,
       postID: -1,
+      name: "",
+      surName: "",
       title: "",
-      image: "",
+      image: null,
       description: "",
       postCreatedAt: "",
     },
