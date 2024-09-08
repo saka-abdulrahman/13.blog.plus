@@ -10,9 +10,8 @@ const CreatePost: React.FC = () => {
   const [postContent, setPostContent] = useState<string | null>(null);
   const [postImage, setPostImage] = useState<File | null>(null);
   const [content, setContent] = useState<string | null>(null);
-  const [postIDCounter, setPostIDCounter] = useState<number>(1);
 
-  const { posts, addPost } = usePostStore();
+  const { posts, addPost, postIDCounter, dicPostIDCounter } = usePostStore();
   const { loggedAccount } = useStore();
 
   const createPost = (e: FormEvent) => {
@@ -30,7 +29,7 @@ const CreatePost: React.FC = () => {
     };
 
     addPost(newPost);
-    setPostIDCounter(postIDCounter + 1);
+    dicPostIDCounter();
 
     console.log(posts);
   };

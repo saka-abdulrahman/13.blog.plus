@@ -1,6 +1,5 @@
 import { create } from "zustand";
 
-// User type definition
 type User = {
   userID: number;
   userType: string;
@@ -23,13 +22,13 @@ type User = {
   }[];
 };
 
-// Store type definition
 type Store = {
   users: User[];
   deleteAllUsers: () => void;
   addUser: (user: User) => void;
   signInDoneCounter: number;
   dicSignInDoneCounter: () => void;
+
   loggedAccount: {
     userID: number;
     name: string;
@@ -40,14 +39,12 @@ type Store = {
   setLoggedAccount: (account: User) => void;
 };
 
-// Load users from local storage or return an empty array if none are found
 const loadUsersFromLocalStorage = (): User[] => {
   if (typeof window !== "undefined") {
-    // Check if the code is running in the browser
     const users = localStorage.getItem("users");
     return users ? JSON.parse(users) : [];
   }
-  return []; // Return an empty array when `localStorage` is not available (e.g., on the server side)
+  return [];
 };
 
 const useStore = create<Store>((set) => ({
@@ -69,14 +66,12 @@ const useStore = create<Store>((set) => ({
       }
       return { users: updatedUsers };
     }),
-  // * END of Users
-
-  // ? Sign In Inputs and infos
 
   signInDoneCounter: 1,
   dicSignInDoneCounter: () =>
     set((state) => ({ signInDoneCounter: state.signInDoneCounter + 1 })),
 
+  // * Logged Account
   loggedAccount: {
     userID: -1,
     name: "",
@@ -85,8 +80,6 @@ const useStore = create<Store>((set) => ({
     password: "",
   },
   setLoggedAccount: (account: User) => set({ loggedAccount: account }),
-
-  // ? END of Sign In Inputs and infos
 }));
 
 export default useStore;

@@ -1,44 +1,45 @@
 import { create } from "zustand";
 
-type PostStore = {
-  posts: {
-    userID: number;
-    postID: number;
-    name: string;
-    surName: string;
-    title: string;
-    image: File | null;
-    description: string;
-    postCreatedAt: string;
-  }[];
+type Post = {
+  userID: number;
+  postID: number;
+  name: string;
+  surName: string;
+  title: string;
+  image: File | null;
+  description: string;
+  postCreatedAt: string;
+};
 
-  addPost: (newPost: {
-    userID: number;
-    postID: number;
-    name: string;
-    surName: string;
-    title: string;
-    image: File | null;
-    description: string;
-    postCreatedAt: string;
-  }) => void;
+type PostStore = {
+  posts: Post[];
+  addPost: (newPost: Post) => void;
+  postIDCounter: number;
+  dicPostIDCounter: () => void;
+};
+
+const savePostsToLocalStorage = (posts: Post[]) => {
+  localStorage.setItem("posts", JSON.stringify(posts));
+};
+
+const loadPostsFromLocalStorage = (): Post[] => {
+  const savedPosts = localStorage.getItem("posts");
+  return savedPosts ? JSON.parse(savedPosts) : [];
 };
 
 const usePostStore = create<PostStore>((set) => ({
-  posts: [
-    {
-      userID: -1,
-      postID: -1,
-      name: "",
-      surName: "",
-      title: "",
-      image: null,
-      description: "",
-      postCreatedAt: "",
-    },
-  ],
+  posts: loadPostsFromLocalStorage(),
 
-  addPost: (newPost) => set((state) => ({ posts: [...state.posts, newPost] })),
+  addPost: (newPost) =>
+    set((state) => {
+      const updatedPosts = [...state.posts, newPost];
+      savePostsToLocalStorage(updatedPosts); // Save the updated posts to local storage
+      return { posts: updatedPosts };
+    }),
+
+  postIDCounter: 0,
+  dicPostIDCounter: () =>
+    set((state) => ({ postIDCounter: state.postIDCounter + 1 })),
 }));
 
 export default usePostStore;
